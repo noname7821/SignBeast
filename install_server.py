@@ -100,6 +100,8 @@ class InstallHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
 
     def do_SIGN(self):
+        os.chmod('zsign', 0o755)
+
         if not os.path.exists('input.ipa'):
             self.send_response(400)
             self.send_header('Content-Type', 'application/json')
